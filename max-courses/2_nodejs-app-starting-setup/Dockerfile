@@ -3,15 +3,17 @@
 FROM node
 # work directory specifies all subsequent RUN commands will be executed inside the folder
 WORKDIR /app
+# copy package.json into app folder before running npm install
+COPY package.json /app
+# Run npm install to install all dependencies
+# run the command in the WORKDIR
+RUN npm install
 # COPY - Which files should go in the image
 # first argument(Host file System) specifies from path where the files should be copied from'
 # since first argument is a dot it specifies the from contents are in same folder as dockerfile excluding the dockerfile
 # second argument(Image/container file system) specifies path inside of the image where the files should be stored
 # COPY . /app can also be changed to COPY . ./
 COPY . /app
-# Run npm install to install all dependencies
-# run the command in the WORKDIR
-RUN npm install
 # Expose a port to our local system
 # exposing a port alone will not work we also need to specify a localhost port in our run command using -p <localhost port number>:<internal docker container exposed port>
 EXPOSE 80
