@@ -12,3 +12,4 @@ COPY . .
 EXPOSE 3000
 # set the comand to execute the node server.js when our container starts
 CMD ["node","server.js"]
+# run the command >docker build .
