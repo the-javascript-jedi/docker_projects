@@ -9,6 +9,10 @@ RUN npm install
 COPY . .
 # expose the port
 EXPOSE 80
+# volume instruction
+# path inside container which must be mapped to outside the container
+# unnamed volumes
+# VOLUME ["/app/feedback"]
 # specify comand to execute when contaner is started
 CMD [ "node", "server.js" ]
 # ///////////////////////////////
