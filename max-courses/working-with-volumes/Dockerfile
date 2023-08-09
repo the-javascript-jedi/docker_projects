@@ -13,6 +13,8 @@ EXPOSE 80
 # path inside container which must be mapped to outside the container
 # unnamed volumes
 # VOLUME ["/app/feedback"]
+# specify anonymous module so node_modules in image are not oerwritten by the files in local directory
+# VOLUME ["/app/node_modules"]
 # specify comand to execute when contaner is started
 CMD [ "node", "server.js" ]
 # ///////////////////////////////
