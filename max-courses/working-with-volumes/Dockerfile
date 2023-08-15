@@ -7,8 +7,10 @@ COPY package.json .
 RUN npm install
 # copy files present in the folder to the workdir created
 COPY . .
+# Build the argument
+ARG DEFAULT_PORT=80
 # specify environment variable
-ENV PORT 80
+ENV PORT $DEFAULT_PORT
 # PORT - name of environment variable
 # 80 - value of environment variable
 # expose the port using Environment variable
