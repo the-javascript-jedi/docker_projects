@@ -7,8 +7,12 @@ COPY package.json .
 RUN npm install
 # copy files present in the folder to the workdir created
 COPY . .
-# expose the port
-EXPOSE 80
+# specify environment variable
+ENV PORT 80
+# PORT - name of environment variable
+# 80 - value of environment variable
+# expose the port using Environment variable
+EXPOSE $PORT
 # volume instruction
 # path inside container which must be mapped to outside the container
 # unnamed volumes

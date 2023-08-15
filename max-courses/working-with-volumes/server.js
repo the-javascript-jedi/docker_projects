@@ -43,4 +43,6 @@ app.post("/create", async (req, res) => {
   });
 });
 
-app.listen(80);
+// app.listen(80);
+// using environment variables
+app.listen(process.env.PORT);
