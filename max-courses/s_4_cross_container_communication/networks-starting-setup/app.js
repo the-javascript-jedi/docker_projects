@@ -67,18 +67,16 @@ app.get("/people", async (req, res) => {
   }
 });
 
-// for mongodb error
-app.listen(3000);
-
-//// comment this code since we are getting error and rerun image
-// mongoose.connect(
-//   "mongodb://localhost:27017/swfavorites",
-//   { useNewUrlParser: true },
-//   (err) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       app.listen(3000);
-//     }
-//   }
-// );
+mongoose.connect(
+  // comment this code since we are getting error and rerun image
+  // "mongodb://localhost:27017/swfavorites",
+  "mongodb://host.docker.internal:27017/swfavorites",
+  { useNewUrlParser: true },
+  (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      app.listen(3000);
+    }
+  }
+);
