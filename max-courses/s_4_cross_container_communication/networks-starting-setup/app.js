@@ -68,9 +68,8 @@ app.get("/people", async (req, res) => {
 });
 
 mongoose.connect(
-  // comment this code since we are getting error and rerun image
-  // "mongodb://localhost:27017/swfavorites",
-  "mongodb://host.docker.internal:27017/swfavorites",
+  // 172.17.0.2 - ip address of mongodb separate container
+  "mongodb://172.17.0.2:27017/swfavorites",
   { useNewUrlParser: true },
   (err) => {
     if (err) {
