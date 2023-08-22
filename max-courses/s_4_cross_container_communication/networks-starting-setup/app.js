@@ -68,8 +68,8 @@ app.get("/people", async (req, res) => {
 });
 
 mongoose.connect(
-  // 172.17.0.2 - ip address of mongodb separate container
-  "mongodb://172.17.0.2:27017/swfavorites",
+  // mongodb - name of the mongodb container, if we mention the name of the container, automatically the ip address of container will be resolved as they are in same created network
+  "mongodb://mongodb:27017/swfavorites",
   { useNewUrlParser: true },
   (err) => {
     if (err) {
