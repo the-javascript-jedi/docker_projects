@@ -87,8 +87,11 @@ app.delete("/goals/:id", async (req, res) => {
 // 'mongodb://localhost:27017/course-goals',
 //wen we are using the networks and creating image we should use the name of the container(mongodb) which is part of the same network
 //  "mongodb://host.docker.internal:27017/course-goals",
+// ns-username for mongodb
+// secret-password for mongodb
+// ?authSource=admin - for mongodb connectivity
 mongoose.connect(
-  "mongodb://mongodb:27017/course-goals",
+  "mongodb://ns:secret@mongodb:27017/course-goals?authSource=admin",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
