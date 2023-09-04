@@ -90,8 +90,9 @@ app.delete("/goals/:id", async (req, res) => {
 // ns-username for mongodb
 // secret-password for mongodb
 // ?authSource=admin - for mongodb connectivity
+// full connection string -  `mongodb://ns:secret@mongodb:27017/course-goals?authSource=admin`,
 mongoose.connect(
-  "mongodb://ns:secret@mongodb:27017/course-goals?authSource=admin",
+  `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongodb:27017/course-goals?authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -101,7 +102,7 @@ mongoose.connect(
       console.error("FAILED TO CONNECT TO MONGODB");
       console.error(err);
     } else {
-      console.log("CONNECTED TO MONGODB");
+      console.log("CONNECTED TO MONGODB!!!-ns changed");
       app.listen(80);
     }
   }
