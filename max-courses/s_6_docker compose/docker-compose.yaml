@@ -1,0 +1,20 @@
+# for yaml file we must always start with version
+version: '3.8'
+services:
+# containers
+  mongodb:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+    # specify env variables
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME:max
+    #   MONGO_INITDB_ROOT_PASSWORD:secret
+    # specify environment variables in an env file
+    env_file:
+      - ./env/mongo.env
+  # backend:
+
+  # frontend:
+  volumes:
+    data:
