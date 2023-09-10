@@ -13,8 +13,30 @@ services:
     # specify environment variables in an env file
     env_file:
       - ./env/mongo.env
-  # backend:
-
+# compose commands for node file
+  backend:
+  # short form for which image the backend be based
+    build: ./backend
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env 
+    # only after the mongodb compose is completed the backend compose should be started
+    depends_on:
+      - mongodb
+  # long form for which image the backend be based
+  # build:
+      # context: ./backend
+      # dockerfile: Dockerfile
+      # args:
+      #   some-arg: 1
+      # ports:
+      #   - '80:80'
   # frontend:
 volumes:
   data:
+  logs:
