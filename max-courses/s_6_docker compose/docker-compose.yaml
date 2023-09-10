@@ -36,7 +36,19 @@ services:
       #   some-arg: 1
       # ports:
       #   - '80:80'
-  # frontend:
+# compose commands for react
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src
+    # run the app in interactive mode
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+    
 volumes:
   data:
   logs:
