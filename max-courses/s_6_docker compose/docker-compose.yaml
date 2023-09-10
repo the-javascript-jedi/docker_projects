@@ -6,6 +6,8 @@ services:
     image: "mongo"
     volumes:
       - data:/data/db
+    # custom container name
+    # container_name: mongodb  
     # specify env variables
     # environment:
     #   MONGO_INITDB_ROOT_USERNAME:max
