@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  npm:
+  # specify path of the docker file as same path of compose file
+    build: ./
+    # specifies that interactive commands can be entered
+    stdin_open: true
+    tty: true 
+    volumes:
+    # bind mount path
+      - ./:/app
