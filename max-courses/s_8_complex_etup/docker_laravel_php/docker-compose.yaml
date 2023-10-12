@@ -9,7 +9,19 @@ services:
     # ro - read only so container can never change configuration
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-  # php:
+  php:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+    volumes:
+    # bind mount point at the src folder in local machine and we'll then mount this to the var/www/html path inside of the container.
+    # delegated is a optimization improvement
+      - ./src:/var/www/html:delegated
+    ports:
+    # docker image for php exposes 9000, we expect 3000
+    # we have to map 3000 to 9000.
+    # host machine first:our container internal port.
+      - '3000:9000'  
   # mysql:
   # composer:
   # artisan:
