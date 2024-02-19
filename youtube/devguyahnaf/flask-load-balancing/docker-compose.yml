@@ -1,0 +1,24 @@
+# to scale the app to 3 containers
+# docker compose up -d --build --scale app=3
+# docker compose down - to stop
+version: "3"
+
+services:
+  app:
+    build:
+      # find the docker file name 'app' inside the folder context
+      context: app
+    # map the port inside the container to our system
+    ports:
+      - "5000"
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    # wait till application starts
+    depends_on:
+      - app
+    #map port 80 on real computer to the docker port
+    ports:
+      - "80:80"
+
