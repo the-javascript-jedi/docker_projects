@@ -1,0 +1,16 @@
+pipeline{
+    agent any
+    stages{
+        stage('Upstream Job'){
+            steps{
+                echo "This is upstream job"
+            }
+        }
+        stage('Downstream Job'){
+	//provide the name of the downstream job to be executed - the job is present in the jenkisn dashboard
+            steps{
+                build job: 'Downstream-job'
+            }
+        }
+    }
+}
